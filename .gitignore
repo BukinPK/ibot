@@ -1,0 +1,10 @@
+*.swp
+*.swo
+build/
+dist/
+/venv/
+*.pyc
+*.egg-info/
+bot_data/
+__pycache__/
+/run.py
