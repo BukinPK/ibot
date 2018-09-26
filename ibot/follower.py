@@ -115,7 +115,7 @@ class Follower:
                     return True
                 continue
             except KeyError as ex:
-                print('Unnown error:', ex)
+                print('Unknown error:', ex)
             self.is_friend = False
             return False
             
@@ -154,7 +154,7 @@ class Follower:
             if self.is_attention_whore:
                 print('whore', end=' ') 
             if self.is_media_homeless:
-                print('homless', end=' ') 
+                print('homeless', end=' ') 
             #if self.is_business:
             #   print('business', end=' ') 
             if self.is_shit_eater:

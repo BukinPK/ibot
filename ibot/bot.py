@@ -25,8 +25,8 @@ class Bot:
         except FileExistsError: pass
 
     def login(self):
-        if not self.my_name: self.my_name = input('Введите логин: ')
-        if not self.passwd: self.passwd = getpass('Введите пароль: ')
+        if not self.my_name: self.my_name = input('Enter your login: ')
+        if not self.passwd: self.passwd = getpass('Enter your password: ')
         self.api = InstagramAPI(self.my_name, self.passwd)
         if self.api.login() is True:
             self.getUserId = self._getUserId
@@ -49,12 +49,12 @@ class Bot:
     
     def _makeTarget(self, target_id=None):
         if not target_id: target_id = self.getUserId(
-            input('Введите название группы: '))
+            input('Enter the name of the target group: '))
         self.target = Target(target_id, self.api)
 
     def _makeFollower(self, follower_id=None):
         if not follower_id: follower_id = self.getUserIyd(
-            input('Введите имя пользователя: '))
+            input('Enter the name of the user: '))
         self.follower = Follower(follower_id, self.api)
         return self.follower
 
