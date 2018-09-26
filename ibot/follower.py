@@ -147,7 +147,7 @@ class Follower:
 
     def action(self):
         if self.checkFriendship() is True:
-            print('is friend [%s]', self.username)
+            print('is friend [%s]' % self.username)
             return False
         if self.checkInfo() is False:
             print('bad info [%s]:' % self.username, end=' ')
