@@ -1,10 +1,14 @@
 import os
+import sys
 import re
 import codecs
 from setuptools import setup
 
 
 cwd = os.path.abspath(os.path.dirname(__file__))
+
+if len(sys.argv) < 2:
+    sys.argv.append('install')
 
 def read(filename):
     with codecs.open(os.path.join(cwd, filename), 'rb', 'utf-8') as h:
