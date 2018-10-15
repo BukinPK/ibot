@@ -69,12 +69,15 @@ class Bot:
     def getData(self):
         with open(os.path.join(basedir, 'bot_data', 'user_fol'), 'r') as f:
             following = np.array(f.readlines(), dtype='int64')
-        if os.path.exists(os.path.join(basedir, 'bot_data', 'user_unfol')):
-            with open(os.path.join(basedir, 'bot_data', 'user_unfol'),
-                      'r') as f:
-                self.unfollowed = np.array(f.readlines(), dtype='int64')
 
-            following = np.setdiff1d(following, self.unfollowed,
-                                     assume_unique=True)
+        ext = []
+        for file in ('user_unfol', 'user_unfol_exceptions'):
+            if os.path.exists(os.path.join(basedir, 'bot_data', file)):
+                with open(os.path.join(basedir, 'bot_data', file), 'r') as f:
+                    ext.extend(f.readlines()) 
+        if ext:
+            ext = np.array(ext, dtype='int64')
+            following = np.setdiff1d(following, ext, assume_unique=True)
+
         self.following = list(map(self.makeFollower,
                                   list(map(int, following))))
