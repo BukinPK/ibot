@@ -126,6 +126,9 @@ class Follower:
             f.write(str(self.id)+'\n')
 
     def randomPicLike(self):
+        if self.feed['num_results'] is 0:
+            self._liked = []
+            return
         while True:
             like_count = randrange(1,4)
             pic_count = self.feed['num_results']
@@ -167,7 +170,7 @@ class Follower:
             self.randomPicLike()
             print('pic liked:', self.liked, end=' ')
         else:
-            print('no pic liked, is private', end=' ')
+            print('no pic liked, is private,', end=' ')
             sleep(randrange(2, self.like_wait))
         self.follow()
         print('following [%s]' % self.username)

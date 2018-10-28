@@ -7,7 +7,7 @@ from .follower import Follower
 
 class Target:
 
-    follow_limit = int(60*60 // 20)
+    follow_limit = int(60*60 // 40)
     max_time = int(follow_limit * 1.5)
     min_time = int(follow_limit // 1.5)
 
@@ -41,7 +41,7 @@ class Target:
         if 'cache' not in dir(self) or force is True:
             self.cache = []
             passed = 0
-            for file in (os.path.join('bot_data', 'user_fol'), os.path.join('bot_data', 'bad_user')):
+            for file in [os.path.join('bot_data', x) for x in ('user_fol', 'bad_user')]:
                 try:
                     with open(os.path.join(basedir, file), 'r') as f:
                         for cached_follower in f.readlines():
@@ -64,7 +64,8 @@ class Target:
         while True:
             self.getFollowerList()
             self.followerListClean(force=True)
-            if self.followers is []: break
+            if self.followers is []:
+                break
             for follower_id in self.followers:
                 self.followerSelect(follower_id)
                 if self.follower.action() is True:
