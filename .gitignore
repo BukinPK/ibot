@@ -8,3 +8,4 @@ dist/
 bot_data/
 __pycache__/
 /run.py
+/test.py

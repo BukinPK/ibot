@@ -29,7 +29,8 @@ class Target:
             for user in temp['users']:
                 self.followers.append(user['pk'])
             self.followers_stack.extend(self.followers)
-        else: return
+        else:
+            return
         if temp['big_list'] is False:
             self.next_max_id = ''
             self.end_list = True
